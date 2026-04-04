@@ -1,184 +1,290 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <!-- Primary Meta Tags -->
-    <title>RN Clean Architecture Template - Production-Ready React Native Starter</title>
-    <meta name="title" content="RN Clean Architecture Template - Production-Ready React Native Starter">
-    <meta name="description" content="A robust, production-ready React Native template with Clean Architecture, TypeScript, and AI-First principles. Skip the boilerplate and start building features.">
-    <meta name="keywords" content="React Native, Clean Architecture, Template, Boilerplate, TypeScript, Zustand, TanStack Query, Mobile Development, Starter Kit, iOS, Android">
-    <meta name="author" content="alejandro-technology">
-    <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#0f172a">
+    <title>
+      RN Clean Architecture Template - Production-Ready React Native Starter
+    </title>
+    <meta
+      name="title"
+      content="RN Clean Architecture Template - Production-Ready React Native Starter"
+    />
+    <meta
+      name="description"
+      content="A robust, production-ready React Native template with Clean Architecture, TypeScript, and AI-First principles. Skip the boilerplate and start building features."
+    />
+    <meta
+      name="keywords"
+      content="React Native, Clean Architecture, Template, Boilerplate, TypeScript, Zustand, TanStack Query, Mobile Development, Starter Kit, iOS, Android"
+    />
+    <meta name="author" content="alejandro-technology" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#060912">
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://github.com/alejandro-technology/react-native-template">
-    <meta property="og:title" content="RN Clean Architecture Template">
-    <meta property="og:description" content="A robust, production-ready React Native template with Clean Architecture, TypeScript, and AI-First principles.">
-    <meta property="og:image" content="https://opengraph.githubassets.com/1/alejandro-technology/react-native-template">
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://github.com/alejandro-technology/react-native-template"
+    />
+    <meta property="og:title" content="RN Clean Architecture Template" />
+    <meta
+      property="og:description"
+      content="A robust, production-ready React Native template with Clean Architecture, TypeScript, and AI-First principles."
+    />
+    <meta
+      property="og:image"
+      content="https://opengraph.githubassets.com/1/alejandro-technology/react-native-template"
+    />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://github.com/alejandro-technology/react-native-template">
-    <meta property="twitter:title" content="RN Clean Architecture Template">
-    <meta property="twitter:description" content="A robust, production-ready React Native template with Clean Architecture, TypeScript, and AI-First principles.">
-    <meta property="twitter:image" content="https://opengraph.githubassets.com/1/alejandro-technology/react-native-template">
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:url"
+      content="https://github.com/alejandro-technology/react-native-template"
+    />
+    <meta property="twitter:title" content="RN Clean Architecture Template" />
+    <meta
+      property="twitter:description"
+      content="A robust, production-ready React Native template with Clean Architecture, TypeScript, and AI-First principles."
+    />
+    <meta
+      property="twitter:image"
+      content="https://opengraph.githubassets.com/1/alejandro-technology/react-native-template"
+    />
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://github.com/alejandro-technology/react-native-template">
+    <link
+      rel="canonical"
+      href="https://github.com/alejandro-technology/react-native-template"
+    />
 
     <!-- Favicon (Emoji as Favicon) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>"
+    />
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "RN Clean Architecture Template",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "iOS, Android",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "description": "A robust, production-ready React Native template with Clean Architecture, TypeScript, and AI-First principles.",
-      "author": {
-        "@type": "Person",
-        "name": "alejandro-technology",
-        "url": "https://github.com/alejandro-technology"
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "RN Clean Architecture Template",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "iOS, Android",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "description": "A robust, production-ready React Native template with Clean Architecture, TypeScript, and AI-First principles.",
+        "author": {
+          "@type": "Person",
+          "name": "alejandro-technology",
+          "url": "https://github.com/alejandro-technology"
+        }
       }
-    }
     </script>
 
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
     <!-- Navigation -->
     <nav class="nav">
-        <div class="container nav-content">
-            <div class="logo">
-                <span class="logo-icon">⚡</span>
-                <span class="logo-text">RN Clean Template</span>
-            </div>
-            <div class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#architecture">Architecture</a>
-                <a href="#quickstart">Quick Start</a>
-                <a href="https://github.com/alejandro-technology/react-native-init-app" target="_blank" class="nav-github">GitHub</a>
-            </div>
+      <div class="container nav-content">
+        <div class="logo">
+          <span class="logo-icon">⚡</span>
+          <span class="logo-text">RN Clean Template</span>
         </div>
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#architecture">Architecture</a>
+          <a href="#quickstart">Quick Start</a>
+          <a
+            href="https://github.com/alejandro-technology/react-native-init-app"
+            target="_blank"
+            class="nav-github"
+            ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex-shrink:0"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>GitHub</a
+          >
+        </div>
+      </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="gradient-bg"></div>
-        <div class="container hero-content">
-            <div class="hero-badge">
-                <span class="badge-dot"></span>
-                <span>Production-Ready Template</span>
-            </div>
-            <h1 class="hero-title">
-                Build React Native Apps
-                <span class="gradient-text">The Right Way</span>
-            </h1>
-            <p class="hero-description">
-                A robust starter template with Clean Architecture, TypeScript, and AI-First principles.
-                Skip the boilerplate and start building features from day one.
-            </p>
-            <div class="hero-actions">
-                <button class="btn btn-primary" onclick="scrollToQuickStart()">
-                    Get Started
-                    <span class="btn-arrow">→</span>
-                </button>
-                <a href="https://github.com/alejandro-technology/react-native-template" target="_blank" class="btn btn-secondary">
-                    View on GitHub
-                </a>
-            </div>
-            <div class="hero-code">
-                <div class="code-header">
-                    <div class="code-dots">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                    <span class="code-title">Terminal</span>
-                </div>
-                <div class="code-content">
-                    <div class="code-row comment">
-                        <span class="code-comment"># Create your app in seconds</span>
-                    </div>
-                    <div class="code-row command">
-                        <code><span class="code-command">npx</span> create-react-native-init-app</code>
-                        <button class="copy-line-btn" aria-label="Copy command">📋</button>
-                    </div>
-                    
-                    <div class="code-row comment">
-                        <span class="code-comment"># Or use the shorthand</span>
-                    </div>
-                    <div class="code-row command">
-                        <code><span class="code-command">npm</span> init react-native-init-app</code>
-                        <button class="copy-line-btn" aria-label="Copy command">📋</button>
-                    </div>
-                </div>
-            </div>
+      <div class="gradient-bg"></div>
+      <div class="container hero-content">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span>Production-Ready Template</span>
         </div>
+        <h1 class="hero-title">
+          Build React Native Apps
+          <span class="gradient-text">The Right Way</span>
+        </h1>
+        <p class="hero-description">
+          A robust starter template with Clean Architecture, TypeScript, and
+          AI-First principles. Skip the boilerplate and start building features
+          from day one.
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="scrollToQuickStart()">
+            Get Started
+            <span class="btn-arrow">→</span>
+          </button>
+          <a
+            href="https://github.com/alejandro-technology/react-native-template"
+            target="_blank"
+            class="btn btn-secondary"
+          >
+            View on GitHub
+          </a>
+        </div>
+        <div class="hero-code">
+          <div class="code-header">
+            <div class="code-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <span class="code-title">Terminal</span>
+          </div>
+          <div class="code-content">
+            <div class="code-row comment">
+              <span class="code-comment"># Create your app in seconds</span>
+            </div>
+            <div class="code-row command">
+              <code
+                ><span class="code-command">npx</span>
+                create-react-native-init-app</code
+              >
+              <button class="copy-line-btn" aria-label="Copy command">
+                📋
+              </button>
+            </div>
+
+            <div class="code-row comment">
+              <span class="code-comment"># Or use the shorthand</span>
+            </div>
+            <div class="code-row command">
+              <code
+                ><span class="code-command">npm</span> init
+                react-native-init-app</code
+              >
+              <button class="copy-line-btn" aria-label="Copy command">
+                📋
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Features Grid -->
     <section id="features" class="features">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Everything You Need</h2>
+          <p class="section-description">
+            Production-ready features out of the box
+          </p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🏗️</div>
+            <h3>Clean Architecture</h3>
+            <p>
+              4-layer architecture (Domain, Application, Infrastructure, UI) for
+              separation of concerns and testability.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🤖</div>
+            <h3>AI-Powered Development</h3>
+            <p>
+              Built-in .ai/ directory with agents and skills for context-aware
+              code generation with AI assistants.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Modern Tech Stack</h3>
+            <p>
+              React Native 0.84, TypeScript 5.x, Zustand, TanStack Query, React
+              Hook Form + Zod validation.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🎨</div>
+            <h3>Theming System</h3>
+            <p>
+              5 theme modes (light, dark, primary, secondary, premium) with
+              centralized design tokens.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🔥</div>
+            <h3>Firebase Ready</h3>
+            <p>
+              Pre-configured Firebase integration with Auth, Firestore, and
+              Storage ready to use.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🧪</div>
+            <h3>Testing Setup</h3>
+            <p>
+              Jest and React Native Testing Library configured with
+              comprehensive test coverage.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🚀</div>
+            <h3>Fast Storage</h3>
+            <p>
+              MMKV for lightning-fast, encrypted local storage with better
+              performance than AsyncStorage.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🧩</div>
+            <h3>Modular Structure</h3>
+            <p>
+              Feature modules with complete CRUD examples including
+              authentication and products.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- App Preview Section -->
+    <section id="preview" class="app-preview">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Everything You Need</h2>
-                <p class="section-description">Production-ready features out of the box</p>
+                <h2 class="section-title">See It In Action</h2>
+                <p class="section-description">Built-in component library with 14+ demos and 20+ variants</p>
             </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🏗️</div>
-                    <h3>Clean Architecture</h3>
-                    <p>4-layer architecture (Domain, Application, Infrastructure, UI) for separation of concerns and testability.</p>
+            <div class="preview-devices">
+                <div class="device-item">
+                    <span class="device-label">Android</span>
+                    <img src="assets/rnkit_preview_android.png" alt="RN Kit Component Library on Android" class="device-screenshot" loading="lazy" width="280" height="560" decoding="async">
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🤖</div>
-                    <h3>AI-Powered Development</h3>
-                    <p>Built-in .ai/ directory with agents and skills for context-aware code generation with AI assistants.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Modern Tech Stack</h3>
-                    <p>React Native 0.84, TypeScript 5.x, Zustand, TanStack Query, React Hook Form + Zod validation.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎨</div>
-                    <h3>Theming System</h3>
-                    <p>5 theme modes (light, dark, primary, secondary, premium) with centralized design tokens.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔥</div>
-                    <h3>Firebase Ready</h3>
-                    <p>Pre-configured Firebase integration with Auth, Firestore, and Storage ready to use.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🧪</div>
-                    <h3>Testing Setup</h3>
-                    <p>Jest and React Native Testing Library configured with comprehensive test coverage.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🚀</div>
-                    <h3>Fast Storage</h3>
-                    <p>MMKV for lightning-fast, encrypted local storage with better performance than AsyncStorage.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🧩</div>
-                    <h3>Modular Structure</h3>
-                    <p>Feature modules with complete CRUD examples including authentication and products.</p>
+                <div class="device-item">
+                    <span class="device-label">iOS</span>
+                    <img src="assets/rnkit_preview_ios.png" alt="RN Kit Component Library on iOS" class="device-screenshot" loading="lazy" width="280" height="560" decoding="async">
                 </div>
             </div>
         </div>
@@ -186,82 +292,92 @@
 
     <!-- Architecture Section -->
     <section id="architecture" class="architecture">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Clean Architecture</h2>
-                <p class="section-description">Scalable, testable, and maintainable</p>
-            </div>
-            <div class="architecture-content">
-                <div class="architecture-diagram">
-                    <div class="layer layer-ui">
-                        <div class="layer-title">UI Layer</div>
-                        <div class="layer-desc">Screens, Components, Navigation</div>
-                    </div>
-                    <div class="layer layer-application">
-                        <div class="layer-title">Application Layer</div>
-                        <div class="layer-desc">Use Cases, State Management</div>
-                    </div>
-                    <div class="layer layer-infrastructure">
-                        <div class="layer-title">Infrastructure Layer</div>
-                        <div class="layer-desc">API Calls, Database, Third-party</div>
-                    </div>
-                    <div class="layer layer-domain">
-                        <div class="layer-title">Domain Layer</div>
-                        <div class="layer-desc">Entities, Repository Interfaces</div>
-                    </div>
-                </div>
-                <div class="architecture-info">
-                    <h3>Why Clean Architecture?</h3>
-                    <ul class="architecture-list">
-                        <li>
-                            <span class="list-icon">✓</span>
-                            <div>
-                                <strong>Testability</strong>
-                                <p>Each layer can be tested independently with clear boundaries</p>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="list-icon">✓</span>
-                            <div>
-                                <strong>Maintainability</strong>
-                                <p>Changes in one layer don't affect others, reducing bugs</p>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="list-icon">✓</span>
-                            <div>
-                                <strong>Scalability</strong>
-                                <p>Add new features without touching existing code</p>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="list-icon">✓</span>
-                            <div>
-                                <strong>Team Collaboration</strong>
-                                <p>Clear structure makes it easy for teams to work together</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Clean Architecture</h2>
+          <p class="section-description">
+            Scalable, testable, and maintainable
+          </p>
         </div>
+        <div class="architecture-content">
+          <div class="architecture-diagram">
+            <div class="layer layer-ui">
+              <div class="layer-title">UI Layer</div>
+              <div class="layer-desc">Screens, Components, Navigation</div>
+            </div>
+            <div class="layer layer-application">
+              <div class="layer-title">Application Layer</div>
+              <div class="layer-desc">Use Cases, State Management</div>
+            </div>
+            <div class="layer layer-infrastructure">
+              <div class="layer-title">Infrastructure Layer</div>
+              <div class="layer-desc">API Calls, Database, Third-party</div>
+            </div>
+            <div class="layer layer-domain">
+              <div class="layer-title">Domain Layer</div>
+              <div class="layer-desc">Entities, Repository Interfaces</div>
+            </div>
+          </div>
+          <div class="architecture-info">
+            <h3>Why Clean Architecture?</h3>
+            <ul class="architecture-list">
+              <li>
+                <span class="list-icon">✓</span>
+                <div>
+                  <strong>Testability</strong>
+                  <p>
+                    Each layer can be tested independently with clear boundaries
+                  </p>
+                </div>
+              </li>
+              <li>
+                <span class="list-icon">✓</span>
+                <div>
+                  <strong>Maintainability</strong>
+                  <p>Changes in one layer don't affect others, reducing bugs</p>
+                </div>
+              </li>
+              <li>
+                <span class="list-icon">✓</span>
+                <div>
+                  <strong>Scalability</strong>
+                  <p>Add new features without touching existing code</p>
+                </div>
+              </li>
+              <li>
+                <span class="list-icon">✓</span>
+                <div>
+                  <strong>Team Collaboration</strong>
+                  <p>
+                    Clear structure makes it easy for teams to work together
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Code Example -->
     <section class="code-example">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Developer Experience</h2>
-                <p class="section-description">Clean, type-safe, and intuitive APIs</p>
-            </div>
-            <div class="example-tabs">
-                <button class="tab-btn active" data-tab="service">Service Layer</button>
-                <button class="tab-btn" data-tab="hook">Custom Hook</button>
-                <button class="tab-btn" data-tab="component">Component</button>
-            </div>
-            <div class="example-content">
-                <div class="example-pane active" id="service">
-                    <pre><code><span class="code-comment">// Service with factory pattern and error handling</span>
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Developer Experience</h2>
+          <p class="section-description">
+            Clean, type-safe, and intuitive APIs
+          </p>
+        </div>
+        <div class="example-tabs">
+          <button class="tab-btn active" data-tab="service">
+            Service Layer
+          </button>
+          <button class="tab-btn" data-tab="hook">Custom Hook</button>
+          <button class="tab-btn" data-tab="component">Component</button>
+        </div>
+        <div class="example-content">
+          <div class="example-pane active" id="service">
+            <pre><code><span class="code-comment">// Service with factory pattern and error handling</span>
 <span class="code-keyword">class</span> <span class="code-class">ProductService</span> <span class="code-keyword">implements</span> <span class="code-class">ProductRepository</span> {
   <span class="code-keyword">async</span> <span class="code-function">getProducts</span>(): <span class="code-class">Promise</span>&lt;<span class="code-class">Product</span>[] | <span class="code-class">Error</span>&gt; {
     <span class="code-keyword">try</span> {
@@ -274,9 +390,9 @@
 }
 
 <span class="code-keyword">export default</span> <span class="code-function">createProductService</span>();</code></pre>
-                </div>
-                <div class="example-pane" id="hook">
-                    <pre><code><span class="code-comment">// Custom hook with TanStack Query</span>
+          </div>
+          <div class="example-pane" id="hook">
+            <pre><code><span class="code-comment">// Custom hook with TanStack Query</span>
 <span class="code-keyword">export</span> <span class="code-keyword">function</span> <span class="code-function">useProducts</span>() {
   <span class="code-keyword">return</span> <span class="code-function">useQuery</span>({
     queryKey: [<span class="code-string">'products'</span>],
@@ -290,9 +406,9 @@
 
 <span class="code-comment">// Usage in component</span>
 <span class="code-keyword">const</span> { data, isLoading, error } = <span class="code-function">useProducts</span>();</code></pre>
-                </div>
-                <div class="example-pane" id="component">
-                    <pre><code><span class="code-comment">// Type-safe component with theme support</span>
+          </div>
+          <div class="example-pane" id="component">
+            <pre><code><span class="code-comment">// Type-safe component with theme support</span>
 <span class="code-keyword">export</span> <span class="code-keyword">function</span> <span class="code-function">ProductCard</span>({ product }: <span class="code-class">Props</span>) {
   <span class="code-keyword">const</span> { mode } = <span class="code-function">useTheme</span>();
   <span class="code-keyword">const</span> styles = <span class="code-function">getProductCardStyles</span>(mode);
@@ -305,182 +421,270 @@
     &lt;/<span class="code-component">View</span>&gt;
   );
 }</code></pre>
-                </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Demo Section -->
+    <section class="video-demo">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Watch It Work</h2>
+                <p class="section-description">A quick look at the template in action</p>
+            </div>
+            <div class="video-wrapper">
+                <video controls muted loop playsinline preload="none" class="demo-video">
+                    <source src="assets/rnkit_review.mp4" type="video/mp4">
+                </video>
             </div>
         </div>
     </section>
 
     <!-- Quick Start -->
     <section id="quickstart" class="quickstart">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Get Started in Seconds</h2>
-                <p class="section-description">Three simple steps to your next app</p>
-            </div>
-            <div class="steps">
-                <div class="step" style="opacity: 1; transform: translateY(0px); transition: opacity 0.5s, transform 0.5s;">
-                    <div class="step-content">
-                        <div class="step-header">
-                            <div class="step-number">1</div>
-                            <h3>Create Your Project</h3>
-                        </div>
-                            <div class="step-code">
-                            <code>npx create-react-native-init-app</code>
-                            <button class="copy-step-btn" data-code="npx create-react-native-init-app" aria-label="Copy command">📋</button>
-                        </div>
-                        <p>Interactive CLI will guide you through the setup</p>
-                    </div>
-                </div>
-                <div class="step" style="opacity: 1; transform: translateY(0px); transition: opacity 0.5s, transform 0.5s;">
-                    <div class="step-content">
-                        <div class="step-header">
-                            <div class="step-number">2</div>
-                            <h3>Install Dependencies</h3>
-                        </div>
-                        <div class="step-code">
-                            <code>npm install && npm run pod-install</code>
-                            <button class="copy-step-btn" data-code="npm install && npm run pod-install" aria-label="Copy command">📋</button>
-                        </div>
-                        <p>Automatically installs npm packages and CocoaPods</p>
-                    </div>
-                </div>
-                <div class="step" style="opacity: 1; transform: translateY(0px); transition: opacity 0.5s, transform 0.5s;">
-                    <div class="step-content">
-                        <div class="step-header">
-                            <div class="step-number">3</div>
-                            <h3>Start Building</h3>
-                        </div>
-                        <div class="step-code" style="flex-direction: column;">
-                            <div class="code-group">
-                                <code>npm run ios</code>
-                                <button class="copy-step-btn" data-code="npm run ios" aria-label="Copy iOS command">📋</button>
-                            </div>
-                            <span class="code-or">or</span>
-                            <div class="code-group">
-                                <code>npm run android</code>
-                                <button class="copy-step-btn" data-code="npm run android" aria-label="Copy Android command">📋</button>
-                            </div>
-                        </div>
-                        <p>Launch your app and start adding features</p>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Get Started in Seconds</h2>
+          <p class="section-description">Three simple steps to your next app</p>
         </div>
+        <div class="steps">
+          <div
+            class="step"
+            style="
+              opacity: 1;
+              transform: translateY(0px);
+              transition:
+                opacity 0.5s,
+                transform 0.5s;
+            "
+          >
+            <div class="step-content">
+              <div class="step-header">
+                <div class="step-number">1</div>
+                <h3>Create Your Project</h3>
+              </div>
+              <div class="step-code">
+                <code>npx create-react-native-init-app</code>
+                <button
+                  class="copy-step-btn"
+                  data-code="npx create-react-native-init-app"
+                  aria-label="Copy command"
+                >
+                  📋
+                </button>
+              </div>
+              <p>Interactive CLI will guide you through the setup</p>
+            </div>
+          </div>
+          <div
+            class="step"
+            style="
+              opacity: 1;
+              transform: translateY(0px);
+              transition:
+                opacity 0.5s,
+                transform 0.5s;
+            "
+          >
+            <div class="step-content">
+              <div class="step-header">
+                <div class="step-number">2</div>
+                <h3>Install Dependencies</h3>
+              </div>
+              <div class="step-code">
+                <code>npm install && npm run pod-install</code>
+                <button
+                  class="copy-step-btn"
+                  data-code="npm install && npm run pod-install"
+                  aria-label="Copy command"
+                >
+                  📋
+                </button>
+              </div>
+              <p>Automatically installs npm packages and CocoaPods</p>
+            </div>
+          </div>
+          <div
+            class="step"
+            style="
+              opacity: 1;
+              transform: translateY(0px);
+              transition:
+                opacity 0.5s,
+                transform 0.5s;
+            "
+          >
+            <div class="step-content">
+              <div class="step-header">
+                <div class="step-number">3</div>
+                <h3>Start Building</h3>
+              </div>
+              <div class="step-code" style="flex-direction: column">
+                <div class="code-group">
+                  <code>npm run ios</code>
+                  <button
+                    class="copy-step-btn"
+                    data-code="npm run ios"
+                    aria-label="Copy iOS command"
+                  >
+                    📋
+                  </button>
+                </div>
+                <span class="code-or">or</span>
+                <div class="code-group">
+                  <code>npm run android</code>
+                  <button
+                    class="copy-step-btn"
+                    data-code="npm run android"
+                    aria-label="Copy Android command"
+                  >
+                    📋
+                  </button>
+                </div>
+              </div>
+              <p>Launch your app and start adding features</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Tech Stack -->
     <section class="tech-stack">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Modern Tech Stack</h2>
-                <p class="section-description">Built with the best tools and libraries</p>
-            </div>
-            <div class="tech-grid">
-                <div class="tech-item">
-                    <div class="tech-name">React Native</div>
-                    <div class="tech-version">0.84.0</div>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-name">TypeScript</div>
-                    <div class="tech-version">5.x</div>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-name">React Navigation</div>
-                    <div class="tech-version">7.x</div>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-name">Zustand</div>
-                    <div class="tech-version">5.x</div>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-name">TanStack Query</div>
-                    <div class="tech-version">5.x</div>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-name">React Hook Form</div>
-                    <div class="tech-version">7.x</div>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-name">Zod</div>
-                    <div class="tech-version">4.x</div>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-name">MMKV</div>
-                    <div class="tech-version">4.x</div>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-name">Firebase</div>
-                    <div class="tech-version">23.x</div>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-name">Axios</div>
-                    <div class="tech-version">1.x</div>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-name">Jest</div>
-                    <div class="tech-version">29.x</div>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-name">Testing Library</div>
-                    <div class="tech-version">13.x</div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Modern Tech Stack</h2>
+          <p class="section-description">
+            Built with the best tools and libraries
+          </p>
         </div>
+        <div class="tech-grid">
+          <div class="tech-item">
+            <div class="tech-name">React Native</div>
+            <div class="tech-version">0.84.0</div>
+          </div>
+          <div class="tech-item">
+            <div class="tech-name">TypeScript</div>
+            <div class="tech-version">5.x</div>
+          </div>
+          <div class="tech-item">
+            <div class="tech-name">React Navigation</div>
+            <div class="tech-version">7.x</div>
+          </div>
+          <div class="tech-item">
+            <div class="tech-name">Zustand</div>
+            <div class="tech-version">5.x</div>
+          </div>
+          <div class="tech-item">
+            <div class="tech-name">TanStack Query</div>
+            <div class="tech-version">5.x</div>
+          </div>
+          <div class="tech-item">
+            <div class="tech-name">React Hook Form</div>
+            <div class="tech-version">7.x</div>
+          </div>
+          <div class="tech-item">
+            <div class="tech-name">Zod</div>
+            <div class="tech-version">4.x</div>
+          </div>
+          <div class="tech-item">
+            <div class="tech-name">MMKV</div>
+            <div class="tech-version">4.x</div>
+          </div>
+          <div class="tech-item">
+            <div class="tech-name">Firebase</div>
+            <div class="tech-version">23.x</div>
+          </div>
+          <div class="tech-item">
+            <div class="tech-name">Axios</div>
+            <div class="tech-version">1.x</div>
+          </div>
+          <div class="tech-item">
+            <div class="tech-name">Jest</div>
+            <div class="tech-version">29.x</div>
+          </div>
+          <div class="tech-item">
+            <div class="tech-name">Testing Library</div>
+            <div class="tech-version">13.x</div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- CTA Section -->
     <section class="cta">
-        <div class="container">
-            <div class="cta-content">
-                <h2 class="cta-title">Ready to Build?</h2>
-                <p class="cta-description">
-                    Stop wasting time on boilerplate. Start your next React Native app with a solid foundation.
-                </p>
-                <div class="cta-actions">
-                    <button class="btn btn-primary btn-large" onclick="copyCommand()">
-                        <span id="copy-text">Copy Install Command</span>
-                        <span class="btn-arrow">→</span>
-                    </button>
-                    <a href="https://github.com/alejandro-technology/react-native-template" target="_blank" class="btn btn-secondary btn-large">
-                        Star on GitHub
-                    </a>
-                </div>
-            </div>
+      <div class="container">
+        <div class="cta-content">
+          <h2 class="cta-title">Ready to Build?</h2>
+          <p class="cta-description">
+            Stop wasting time on boilerplate. Start your next React Native app
+            with a solid foundation.
+          </p>
+          <div class="cta-actions">
+            <button class="btn btn-primary btn-large" onclick="copyCommand()">
+              <span id="copy-text">Copy Install Command</span>
+              <span class="btn-arrow">→</span>
+            </button>
+            <a
+              href="https://github.com/alejandro-technology/react-native-template"
+              target="_blank"
+              class="btn btn-secondary btn-large"
+            >
+              Star on GitHub
+            </a>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="logo">
-                        <span class="logo-icon">⚡</span>
-                        <span class="logo-text">RN Clean Template</span>
-                    </div>
-                    <p>Production-ready React Native template with Clean Architecture</p>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Resources</h4>
-                        <a href="https://github.com/alejandro-technology/react-native-template" target="_blank">Template Repository</a>
-                        <a href="https://github.com/alejandro-technology/react-native-init-app" target="_blank">CLI Repository</a>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Quick Links</h4>
-                        <a href="#features">Features</a>
-                        <a href="#architecture">Architecture</a>
-                        <a href="#quickstart">Quick Start</a>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <div class="logo">
+              <span class="logo-icon">⚡</span>
+              <span class="logo-text">RN Clean Template</span>
             </div>
-            <div class="footer-bottom">
-                <p>Made with ❤️ by <a href="https://github.com/alejandro-technology" target="_blank">Alejandro Technology</a></p>
-                <p>MIT License</p>
+            <p>
+              Production-ready React Native template with Clean Architecture
+            </p>
+          </div>
+          <div class="footer-links">
+            <div class="footer-column">
+              <h4>Resources</h4>
+              <a
+                href="https://github.com/alejandro-technology/react-native-template"
+                target="_blank"
+                >Template Repository</a
+              >
+              <a
+                href="https://github.com/alejandro-technology/react-native-init-app"
+                target="_blank"
+                >CLI Repository</a
+              >
             </div>
+            <div class="footer-column">
+              <h4>Quick Links</h4>
+              <a href="#features">Features</a>
+              <a href="#architecture">Architecture</a>
+              <a href="#quickstart">Quick Start</a>
+            </div>
+          </div>
         </div>
+        <div class="footer-bottom">
+          <p>
+            Made with ❤️ by
+            <a href="https://github.com/alejandro-technology" target="_blank"
+              >Alejandro Technology</a
+            >
+          </p>
+          <p>MIT License</p>
+        </div>
+      </div>
     </footer>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

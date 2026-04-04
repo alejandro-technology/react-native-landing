@@ -6,15 +6,29 @@ function scrollToQuickStart() {
   }
 }
 
-// ===== Navigation Scroll Effect =====
+// ===== Navigation Scroll Effect + Parallax (merged, throttled, passive) =====
+const nav = document.querySelector('.nav');
+const gradientBg = document.querySelector('.gradient-bg');
+let scrollTicking = false;
+
 window.addEventListener('scroll', () => {
-  const nav = document.querySelector('.nav');
-  if (window.scrollY > 100) {
-    nav.classList.add('scrolled');
-  } else {
-    nav.classList.remove('scrolled');
+  if (!scrollTicking) {
+    requestAnimationFrame(() => {
+      const scrollY = window.scrollY;
+
+      // Nav scrolled state
+      nav.classList.toggle('scrolled', scrollY > 100);
+
+      // Parallax hero background
+      if (gradientBg && scrollY < window.innerHeight) {
+        gradientBg.style.transform = `translateY(${scrollY * 0.5}px)`;
+      }
+
+      scrollTicking = false;
+    });
+    scrollTicking = true;
   }
-});
+}, { passive: true });
 
 // ===== Tab Switching =====
 const tabButtons = document.querySelectorAll('.tab-btn');
@@ -148,15 +162,7 @@ function animateLayers() {
   });
 }
 
-// ===== Parallax Effect for Hero Background =====
-window.addEventListener('scroll', () => {
-  const scrolled = window.pageYOffset;
-  const gradientBg = document.querySelector('.gradient-bg');
-
-  if (gradientBg && scrolled < window.innerHeight) {
-    gradientBg.style.transform = `translateY(${scrolled * 0.5}px)`;
-  }
-});
+// Parallax handled in merged scroll listener above
 
 // ===== Tech Stack Item Stagger Animation =====
 const techObserver = new IntersectionObserver((entries) => {
@@ -360,9 +366,13 @@ function createMobileNav() {
   }
 }
 
-// Initialize mobile nav on load and resize
+// Initialize mobile nav on load and resize (debounced to avoid repeated calls)
+let resizeTimer;
 window.addEventListener('load', createMobileNav);
-window.addEventListener('resize', createMobileNav);
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(createMobileNav, 150);
+}, { passive: true });
 
 // ===== Performance: Reduce animations on low-end devices =====
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
