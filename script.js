@@ -53,7 +53,7 @@ tabButtons.forEach(button => {
 
 // ===== Copy Command to Clipboard =====
 async function copyCommand() {
-  const command = 'npx create-react-native-init-app';
+  const command = 'npx create-react-native-tui';
   const copyBtn = document.getElementById('copy-text');
   const originalText = copyBtn.textContent;
 
