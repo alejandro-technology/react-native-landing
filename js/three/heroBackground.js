@@ -1,32 +1,60 @@
 import * as THREE from 'three';
 
-const PRIMARY_COLOR = 0x0ea5e9;
+const PLANE_COLOR = 0x3b82c4;
+const CONNECTOR_COLOR = 0xe8935a;
 const MOBILE_BREAKPOINT = 768;
-const CONNECTION_DISTANCE = 14;
-const MAX_ROTATION = 0.15;
-const BOUNDS = { x: 40, y: 25, z: 20 };
+const LAYER_TILT = -Math.PI / 2.6;
+const CONNECTOR_X_POSITIONS = [-20, -7, 7, 20];
 
-function createParticles(count) {
-  const positions = new Float32Array(count * 3);
-  const velocities = new Float32Array(count * 3);
+const LAYERS = [
+  { name: 'UI', position: [0, 9, 0], opacity: 0.5 },
+  { name: 'Application', position: [0, 3, -12], opacity: 0.38 },
+  { name: 'Infrastructure', position: [0, -3, -24], opacity: 0.28 },
+  { name: 'Domain', position: [0, -9, -36], opacity: 0.2 }
+];
 
-  for (let i = 0; i < count; i++) {
-    positions[i * 3] = (Math.random() * 2 - 1) * BOUNDS.x;
-    positions[i * 3 + 1] = (Math.random() * 2 - 1) * BOUNDS.y;
-    positions[i * 3 + 2] = (Math.random() * 2 - 1) * BOUNDS.z;
+function buildLayers(group) {
+  const geometry = new THREE.PlaneGeometry(40, 24, 8, 8);
 
-    velocities[i * 3] = (Math.random() - 0.5) * 0.02;
-    velocities[i * 3 + 1] = (Math.random() - 0.5) * 0.02;
-    velocities[i * 3 + 2] = (Math.random() - 0.5) * 0.02;
-  }
-
-  return { positions, velocities };
+  LAYERS.forEach((layer) => {
+    const material = new THREE.MeshBasicMaterial({
+      color: PLANE_COLOR,
+      wireframe: true,
+      transparent: true,
+      opacity: layer.opacity
+    });
+    const mesh = new THREE.Mesh(geometry, material);
+    mesh.position.set(...layer.position);
+    mesh.rotation.x = LAYER_TILT;
+    group.add(mesh);
+  });
 }
 
-function wrapValue(value, bound) {
-  if (value > bound) return -bound;
-  if (value < -bound) return bound;
-  return value;
+function buildConnectors(group) {
+  const vertices = [];
+
+  CONNECTOR_X_POSITIONS.forEach((x) => {
+    for (let i = 0; i < LAYERS.length - 1; i++) {
+      const from = LAYERS[i].position;
+      const to = LAYERS[i + 1].position;
+      vertices.push(x, from[1], from[2]);
+      vertices.push(x, to[1], to[2]);
+    }
+  });
+
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+
+  const material = new THREE.LineBasicMaterial({
+    color: CONNECTOR_COLOR,
+    transparent: true,
+    opacity: 0.3
+  });
+
+  const connectors = new THREE.LineSegments(geometry, material);
+  group.add(connectors);
+
+  return material;
 }
 
 export function initHeroBackground() {
@@ -39,7 +67,6 @@ export function initHeroBackground() {
   if (!hero || !canvas) return;
 
   const isNarrow = window.innerWidth < MOBILE_BREAKPOINT;
-  const particleCount = isNarrow ? 50 : 120;
 
   let renderer;
   try {
@@ -51,8 +78,11 @@ export function initHeroBackground() {
   renderer.setPixelRatio(isNarrow ? 1.5 : Math.min(window.devicePixelRatio, 2));
 
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 1000);
-  camera.position.z = 50;
+  scene.fog = new THREE.Fog(0x05070c, 20, 90);
+
+  const camera = new THREE.PerspectiveCamera(55, 1, 0.1, 200);
+  camera.position.set(0, 4, 26);
+  camera.lookAt(0, 0, -18);
 
   function sizeToHero() {
     const rect = hero.getBoundingClientRect();
@@ -63,110 +93,44 @@ export function initHeroBackground() {
 
   sizeToHero();
 
-  const { positions, velocities } = createParticles(particleCount);
-  const geometry = new THREE.BufferGeometry();
-  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
-  const material = new THREE.PointsMaterial({
-    color: PRIMARY_COLOR,
-    size: 0.6,
-    transparent: true,
-    opacity: 0.8,
-    blending: THREE.AdditiveBlending,
-    depthWrite: false
-  });
-
-  const points = new THREE.Points(geometry, material);
-
-  const lineMaterial = new THREE.LineBasicMaterial({
-    color: PRIMARY_COLOR,
-    transparent: true,
-    opacity: 0.15,
-    blending: THREE.AdditiveBlending,
-    depthWrite: false
-  });
-
-  const maxConnections = Math.min(particleCount * 4, 400);
-  const linePositions = new Float32Array(maxConnections * 2 * 3);
-  const lineAttribute = new THREE.Float32BufferAttribute(linePositions, 3);
-  lineAttribute.setUsage(THREE.DynamicDrawUsage);
-
-  const lineGeometry = new THREE.BufferGeometry();
-  lineGeometry.setAttribute('position', lineAttribute);
-  lineGeometry.setDrawRange(0, 0);
-
-  const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
-
   const group = new THREE.Group();
-  group.add(points);
-  group.add(lines);
+  buildLayers(group);
+  const connectorMaterial = buildConnectors(group);
   scene.add(group);
 
-  function updateLines() {
-    const positionArray = lineAttribute.array;
-    let connectionsFound = 0;
-
-    outer:
-    for (let i = 0; i < particleCount; i++) {
-      for (let j = i + 1; j < particleCount; j++) {
-        if (connectionsFound >= maxConnections) break outer;
-
-        const dx = positions[i * 3] - positions[j * 3];
-        const dy = positions[i * 3 + 1] - positions[j * 3 + 1];
-        const dz = positions[i * 3 + 2] - positions[j * 3 + 2];
-        const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
-
-        if (distance < CONNECTION_DISTANCE) {
-          const offset = connectionsFound * 6;
-          positionArray[offset] = positions[i * 3];
-          positionArray[offset + 1] = positions[i * 3 + 1];
-          positionArray[offset + 2] = positions[i * 3 + 2];
-          positionArray[offset + 3] = positions[j * 3];
-          positionArray[offset + 4] = positions[j * 3 + 1];
-          positionArray[offset + 5] = positions[j * 3 + 2];
-          connectionsFound++;
-        }
-      }
-    }
-
-    lineAttribute.needsUpdate = true;
-    lineGeometry.setDrawRange(0, connectionsFound * 2);
-  }
-
-  let mouseTargetX = 0;
+  let mouseX = 0;
+  let mouseY = 0;
 
   function handleMouseMove(e) {
     const rect = hero.getBoundingClientRect();
-    const normalizedX = (e.clientX - rect.left) / rect.width - 0.5;
-    mouseTargetX = normalizedX * MAX_ROTATION * 2;
+    mouseX = (e.clientX - rect.left) / rect.width - 0.5;
+    mouseY = (e.clientY - rect.top) / rect.height - 0.5;
   }
 
   hero.addEventListener('mousemove', handleMouseMove);
 
-  let frameCount = 0;
+  const clock = new THREE.Clock();
+  let autoRotationY = 0;
+  let mouseYaw = 0;
+  let mousePitch = 0;
   let animationFrameId = null;
 
   function animate() {
     animationFrameId = requestAnimationFrame(animate);
-    frameCount++;
 
-    for (let i = 0; i < particleCount; i++) {
-      positions[i * 3] += velocities[i * 3];
-      positions[i * 3 + 1] += velocities[i * 3 + 1];
-      positions[i * 3 + 2] += velocities[i * 3 + 2];
+    const elapsedTime = clock.getElapsedTime();
 
-      positions[i * 3] = wrapValue(positions[i * 3], BOUNDS.x);
-      positions[i * 3 + 1] = wrapValue(positions[i * 3 + 1], BOUNDS.y);
-      positions[i * 3 + 2] = wrapValue(positions[i * 3 + 2], BOUNDS.z);
-    }
-    geometry.attributes.position.needsUpdate = true;
+    autoRotationY += 0.0008;
+    const targetYaw = mouseX * 0.16;
+    const targetPitch = mouseY * 0.1;
+    mouseYaw += (targetYaw - mouseYaw) * 0.05;
+    mousePitch += (targetPitch - mousePitch) * 0.05;
 
-    if (frameCount % 2 === 0) {
-      updateLines();
-    }
+    group.rotation.y = autoRotationY + mouseYaw;
+    group.rotation.x = mousePitch;
+    group.position.y = window.scrollY * 0.08;
 
-    group.rotation.y += (mouseTargetX - group.rotation.y) * 0.05;
-    group.position.y = window.scrollY * 0.15;
+    connectorMaterial.opacity = 0.2 + Math.sin(elapsedTime * 0.6) * 0.12;
 
     renderer.render(scene, camera);
   }

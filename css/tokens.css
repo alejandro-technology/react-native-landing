@@ -1,26 +1,31 @@
 /* ===== CSS Variables ===== */
 :root {
   /* Colors */
-  --primary: #0ea5e9;
-  --primary-dark: #0284c7;
-  --secondary: #38bdf8;
-  --accent: #7dd3fc;
+  --primary: #3b82c4;
+  --primary-dark: #2c6494;
+  --secondary: #5b9bd0;
+  --accent: #8fc2e8;
   --success: #10b981;
   --warning: #f59e0b;
 
+  --copper: #e8935a;
+  --copper-dark: #c9723a;
+
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
-  --gradient-hero: linear-gradient(180deg, #060912 0%, #0c1118 50%, #060912 100%);
-  --gradient-card: linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, rgba(37, 99, 235, 0.1) 100%);
+  --gradient-primary: linear-gradient(135deg, #3b82c4 0%, #1e4f78 100%);
+  --gradient-accent: linear-gradient(135deg, #e8935a 0%, #c9723a 100%);
+  --gradient-hero: linear-gradient(180deg, #05070c 0%, #0a0f16 50%, #05070c 100%);
+  --gradient-card: linear-gradient(135deg, rgba(59, 130, 196, 0.08) 0%, rgba(30, 79, 120, 0.08) 100%);
 
   /* Neutral Colors */
-  --bg-primary: #060912;
-  --bg-secondary: #0c1118;
-  --bg-card: #0c1118;
+  --bg-primary: #05070c;
+  --bg-secondary: #0a0f16;
+  --bg-card: #0a0f16;
   --text-primary: #f0f6ff;
-  --text-secondary: #94a3b8;
+  --text-secondary: #7d8a9c;
   --text-muted: #4b5e73;
-  --border: rgba(148, 163, 184, 0.1);
+  --border: rgba(59, 130, 196, 0.14);
+  --grid-line: rgba(59, 130, 196, 0.05);
 
   /* Spacing */
   --spacing-xs: 0.5rem;
@@ -43,10 +48,12 @@
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-  --shadow-glow: 0 0 40px rgba(14, 165, 233, 0.4);
+  --shadow-glow: 0 0 40px rgba(59, 130, 196, 0.35);
+  --shadow-glow-copper: 0 0 32px rgba(232, 147, 90, 0.45);
 
   /* Typography */
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Monaco, 'Cascadia Code', Consolas, monospace;
 
   /* Container */
   --container-max-width: 1200px;

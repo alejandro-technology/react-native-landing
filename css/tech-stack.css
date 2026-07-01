@@ -23,8 +23,8 @@
 
 .tech-item:hover {
   transform: translateY(-2px);
-  border-color: rgba(14, 165, 233, 0.3);
-  background: linear-gradient(135deg, rgba(14, 165, 233, 0.06) 0%, rgba(37, 99, 235, 0.06) 100%);
+  border-color: rgba(59, 130, 196, 0.3);
+  background: linear-gradient(135deg, rgba(59, 130, 196, 0.06) 0%, rgba(30, 79, 120, 0.06) 100%);
 }
 
 .tech-name {
@@ -33,6 +33,7 @@
 }
 
 .tech-version {
+  font-family: var(--font-mono);
   font-size: 0.875rem;
   color: var(--text-muted);
 }

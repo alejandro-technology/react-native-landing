@@ -19,26 +19,27 @@
 }
 
 .device-label {
+  font-family: var(--font-mono);
   font-size: 0.813rem;
   font-weight: 600;
   color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   padding: var(--spacing-xs) var(--spacing-md);
-  background: rgba(14, 165, 233, 0.1);
-  border: 1px solid rgba(14, 165, 233, 0.25);
+  background: rgba(59, 130, 196, 0.1);
+  border: 1px solid rgba(59, 130, 196, 0.25);
   border-radius: var(--radius-2xl);
 }
 
 .device-screenshot {
   width: 280px;
   border-radius: 2rem;
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.6), 0 0 40px rgba(14, 165, 233, 0.15);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.6), 0 0 40px rgba(59, 130, 196, 0.15);
   border: 2px solid rgba(255, 255, 255, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .device-screenshot:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.7), 0 0 60px rgba(14, 165, 233, 0.25);
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.7), 0 0 60px rgba(59, 130, 196, 0.25);
 }

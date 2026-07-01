@@ -37,9 +37,13 @@
   transform: scale(1.05);
 }
 
+.logo-text {
+  font-family: var(--font-mono);
+}
+
 .logo-icon {
   font-size: 1.5rem;
-  filter: drop-shadow(0 0 10px rgba(14, 165, 233, 0.7));
+  filter: drop-shadow(0 0 10px rgba(59, 130, 196, 0.7));
 }
 
 .nav-links {
