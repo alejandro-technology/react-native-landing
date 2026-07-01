@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { onScroll } from '../utils/scrollDispatcher.js';
 
 const PLANE_COLOR = 0x3b82c4;
 const CONNECTOR_COLOR = 0xe8935a;
@@ -57,14 +58,13 @@ function buildConnectors(group) {
   return material;
 }
 
-export function initHeroBackground() {
+export function initScene() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     return;
   }
 
-  const hero = document.querySelector('.hero');
-  const canvas = document.querySelector('.hero-canvas');
-  if (!hero || !canvas) return;
+  const canvas = document.querySelector('.scene-canvas');
+  if (!canvas) return;
 
   const isNarrow = window.innerWidth < MOBILE_BREAKPOINT;
 
@@ -84,14 +84,15 @@ export function initHeroBackground() {
   camera.position.set(0, 4, 26);
   camera.lookAt(0, 0, -18);
 
-  function sizeToHero() {
-    const rect = hero.getBoundingClientRect();
-    renderer.setSize(rect.width, rect.height, false);
-    camera.aspect = rect.width / rect.height;
+  function sizeToViewport() {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    renderer.setSize(width, height, false);
+    camera.aspect = width / height;
     camera.updateProjectionMatrix();
   }
 
-  sizeToHero();
+  sizeToViewport();
 
   const group = new THREE.Group();
   buildLayers(group);
@@ -102,12 +103,21 @@ export function initHeroBackground() {
   let mouseY = 0;
 
   function handleMouseMove(e) {
-    const rect = hero.getBoundingClientRect();
-    mouseX = (e.clientX - rect.left) / rect.width - 0.5;
-    mouseY = (e.clientY - rect.top) / rect.height - 0.5;
+    mouseX = e.clientX / window.innerWidth - 0.5;
+    mouseY = e.clientY / window.innerHeight - 0.5;
   }
 
-  hero.addEventListener('mousemove', handleMouseMove);
+  window.addEventListener('mousemove', handleMouseMove);
+
+  const establishingRange = 2400;
+  let cameraTargetY = 4;
+  let cameraTargetZ = 26;
+
+  onScroll((scrollY) => {
+    const scrollFraction = Math.min(Math.max(scrollY / establishingRange, 0), 1);
+    cameraTargetY = 4 + (-10 - 4) * scrollFraction;
+    cameraTargetZ = 26 + (20 - 26) * scrollFraction;
+  });
 
   const clock = new THREE.Clock();
   let autoRotationY = 0;
@@ -128,7 +138,9 @@ export function initHeroBackground() {
 
     group.rotation.y = autoRotationY + mouseYaw;
     group.rotation.x = mousePitch;
-    group.position.y = window.scrollY * 0.08;
+
+    camera.position.y += (cameraTargetY - camera.position.y) * 0.05;
+    camera.position.z += (cameraTargetZ - camera.position.z) * 0.05;
 
     connectorMaterial.opacity = 0.2 + Math.sin(elapsedTime * 0.6) * 0.12;
 
@@ -148,32 +160,19 @@ export function initHeroBackground() {
     }
   }
 
-  const visibilityObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !document.hidden) {
-        startLoop();
-      } else {
-        stopLoop();
-      }
-    });
-  }, { threshold: 0 });
-
-  visibilityObserver.observe(hero);
+  startLoop();
 
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
       stopLoop();
     } else {
-      const rect = hero.getBoundingClientRect();
-      if (rect.bottom > 0 && rect.top < window.innerHeight) {
-        startLoop();
-      }
+      startLoop();
     }
   });
 
   let resizeTimer;
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(sizeToHero, 150);
+    resizeTimer = setTimeout(sizeToViewport, 150);
   }, { passive: true });
 }

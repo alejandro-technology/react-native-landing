@@ -14,10 +14,17 @@ export function initCardTilt() {
       const rotateY = (centerX - x) / 20;
 
       card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+
+      const xPercent = (x / rect.width) * 100;
+      const yPercent = (y / rect.height) * 100;
+      card.style.setProperty('--mouse-x', `${xPercent}%`);
+      card.style.setProperty('--mouse-y', `${yPercent}%`);
     });
 
     card.addEventListener('mouseleave', () => {
       card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+      card.style.setProperty('--mouse-x', '50%');
+      card.style.setProperty('--mouse-y', '50%');
     });
   });
 }

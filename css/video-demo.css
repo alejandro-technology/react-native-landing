@@ -1,6 +1,6 @@
 /* ===== Video Demo Section ===== */
 .video-demo {
-  background: var(--bg-secondary);
+  background: rgba(10, 15, 22, 0.86);
 }
 
 .video-wrapper {

@@ -1,6 +1,6 @@
 /* ===== Architecture Section ===== */
 .architecture {
-  background: var(--bg-primary);
+  background: rgba(5, 7, 12, 0.86);
 }
 
 .architecture-content {

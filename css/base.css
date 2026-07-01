@@ -24,6 +24,14 @@ body {
   overflow-x: hidden;
 }
 
+.scene-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  display: block;
+}
+
 .container {
   max-width: var(--container-max-width);
   margin: 0 auto;

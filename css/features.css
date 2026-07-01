@@ -1,6 +1,6 @@
 /* ===== Features Section ===== */
 .features {
-  background: var(--bg-secondary);
+  background: rgba(10, 15, 22, 0.86);
   position: relative;
 }
 
@@ -23,12 +23,14 @@
 .feature-card {
   position: relative;
   background: var(--bg-card);
+  background-image: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(59, 130, 196, 0.12), transparent 60%);
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   padding: var(--spacing-xl);
   transition: all 0.3s ease;
   cursor: default;
   will-change: transform;
+  backdrop-filter: blur(6px);
 }
 
 .feature-card::before,

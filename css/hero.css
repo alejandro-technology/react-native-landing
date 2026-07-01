@@ -7,33 +7,7 @@
   position: relative;
   padding-top: 140px;
   overflow: hidden;
-}
-
-.gradient-bg {
-  position: absolute;
-  inset: 0;
-  background: var(--gradient-hero);
-  z-index: 0;
-}
-
-.gradient-bg::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(circle, rgba(59, 130, 196, 0.12) 0%, transparent 70%);
-  animation: pulse 8s ease-in-out infinite;
-}
-
-.hero-canvas {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  display: block;
+  background: transparent;
 }
 
 .hero-content {

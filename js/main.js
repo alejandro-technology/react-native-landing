@@ -1,5 +1,4 @@
 import { initNavScroll, initScrollToQuickStart, initSmoothAnchorLinks } from './modules/navigation.js';
-import { initHeroParallax } from './modules/heroParallax.js';
 import { initScrollReveal } from './modules/scrollReveal.js';
 import { initTabs } from './modules/tabs.js';
 import { initCopyCommand, initCopyLineButtons, initCopyStepButtons, initCodeCopyButtons } from './modules/clipboard.js';
@@ -9,13 +8,12 @@ import { initMobileNav } from './modules/mobileNav.js';
 import { initReducedMotion } from './modules/reducedMotion.js';
 import { initKonami } from './modules/konami.js';
 import { initConsoleSignature } from './modules/consoleSignature.js';
-import { initHeroBackground } from './three/heroBackground.js';
+import { initScene } from './three/scene.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   initNavScroll();
   initScrollToQuickStart();
   initSmoothAnchorLinks();
-  initHeroParallax();
   initScrollReveal();
   initTabs();
   initCopyCommand();
@@ -28,5 +26,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initReducedMotion();
   initKonami();
   initConsoleSignature();
-  initHeroBackground();
+  initScene();
 });

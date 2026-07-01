@@ -1,6 +1,6 @@
 /* ===== App Preview Section ===== */
 .app-preview {
-  background: var(--bg-primary);
+  background: rgba(5, 7, 12, 0.86);
 }
 
 .preview-devices {
