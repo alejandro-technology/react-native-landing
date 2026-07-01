@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A static marketing landing page for the "RN Clean Architecture Template" (a React Native starter/CLI). Plain HTML/CSS/JS — **no framework, no bundler, no npm dependencies, no build step, no test suite**. Three.js is loaded from a CDN via an import map in `index.html`.
+A static marketing landing page for the "React Native TUI" (a React Native starter/CLI). Plain HTML/CSS/JS — **no framework, no bundler, no npm dependencies, no build step, no test suite**. Three.js is loaded from a CDN via an import map in `index.html`.
 
 ## Commands
 

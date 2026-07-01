@@ -1,6 +1,6 @@
-# Landing Page - RN Clean Architecture Template
+# Landing Page - React Native TUI
 
-Landing page moderna y profesional para promocionar el React Native Clean Architecture Template y su CLI tool.
+Landing page moderna y profesional para promocionar el React Native TUI y su CLI tool.
 
 ## 🎨 Características
 
