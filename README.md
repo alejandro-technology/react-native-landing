@@ -16,8 +16,8 @@ Landing page moderna y profesional para promocionar el React Native Clean Archit
 ```
 landing/
 ├── index.html      # Estructura principal de la página
-├── styles.css      # Estilos con variables CSS y animaciones
-├── script.js       # Interactividad y efectos
+├── css/            # Estilos divididos por responsabilidad (tokens, base, componentes, secciones, responsive)
+├── js/             # Interactividad y efectos, organizados en módulos ES + fondo Three.js del hero
 └── README.md       # Este archivo
 ```
 
@@ -59,7 +59,7 @@ Luego abre `http://localhost:8000` en tu navegador.
 
 ### Colores
 
-Edita las variables CSS en `styles.css`:
+Edita las variables CSS en `css/tokens.css`:
 
 ```css
 :root {
